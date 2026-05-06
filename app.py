@@ -33,7 +33,7 @@ def find_lottery(lotteries, lot_id):
 @app.route("/")
 def index():
     lotteries = read_lotteries(TXT_PATH)
-    return render_template("home.html", lotteries=lotteries)
+    return render_template("index.html", lotteries=lotteries)
 
 @app.route("/lottery/<lot_id>")
 def lottery_detail(lot_id):
