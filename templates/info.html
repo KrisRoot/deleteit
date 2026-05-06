@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;800&family=Roboto:wght@300;500&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bar-yellow: #FFD84D;
+      --text-dark: #062032;
+      --muted: rgba(6,32,50,0.6);
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      color: var(--text-dark);
+      background: #fff;
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+    }
+
+    .topbar{
+      background: var(--bar-yellow);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:18px 28px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    }
+
+    .title{
+      font-family: "Poppins", "Playfair Display", serif;
+      font-weight:800;
+      font-size:22px;
+      color: var(--text-dark);
+      letter-spacing:0.2px;
+    }
+
+    .actions{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-size:14px;
+    }
+
+    .actions a{
+      color: var(--muted);
+      text-decoration:none;
+      padding:8px 10px;
+      border-radius:8px;
+      transition: all 160ms ease;
+    }
+
+    .actions a:hover{
+      color: var(--text-dark);
+      background: rgba(0,0,0,0.04);
+      transform: translateY(-1px);
+    }
+
+    .actions .btn-primary{
+      background: #1A73E8;
+      color: #fff;
+      font-weight:600;
+      padding:8px 12px;
+      box-shadow: 0 6px 14px rgba(26,115,232,0.14);
+    }
+
+    /* Center area */
+    main.center-wrap{
+      flex:1;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:40px 20px;
+    }
+
+    /* Card with centered text */
+    .card {
+      background:#fff;
+      padding:36px 48px;
+      border-radius:12px;
+      box-shadow:0 6px 20px rgba(0,0,0,0.08);
+      min-width:280px;
+      max-width:720px;
+      text-align:center;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .card .center-text{
+      font-family: "Poppins", sans-serif;
+      font-size:20px;
+      font-weight:600;
+      color: var(--text-dark);
+      line-height:1.2;
+    }
+
+    @media (max-width:520px){
+      .title{font-size:18px}
+      .topbar{padding:10px 12px}
+      .card{padding:24px}
+      .card .center-text{font-size:16px}
+    }
+  </style>
+</head>
+
+<body>
+  <header class="topbar" role="banner">
+    <div class="brand" aria-label="Site title">
+      <div class="title">Lotteries</div>
+    </div>
+
+    <nav class="actions" aria-label="Authentication">
+      <a href="/login" class="login">Login</a>
+      <a href="/register" class="btn-primary register">Register</a>
+    </nav>
+
+  </header>
+
+  <main class="center-wrap" role="main">
+    <div class="card" role="article" aria-label="Centered card">
+      <div class="center-text">This is not a real lottery and this site is still on progress</div>
+    </div>
+  </main>
+</body>
+</html>
+```

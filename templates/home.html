@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;800&family=Roboto:wght@300;500&display=swap" rel="stylesheet">
+<style>
+
+  :root{
+    --bar-yellow: #FFD84D;
+    --text-dark: #062032;
+    --muted: rgba(6,32,50,0.6);
+  }
+
+  body{      
+    font-family: "Inter", 
+    system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    color: var(--text-dark);      
+    background: #fff;      
+    min-height:100vh;    
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+
+  .grid {
+    display:flex;
+    gap:16px;
+    flex-wrap:wrap; 
+  }
+
+  .card {
+    background:#fff;
+    padding:16px;
+    border-radius:8px;
+    box-shadow:0 2px 6px rgba(0,0,0,0.1);
+    min-width:240px;
+    width:calc(33.333% - 10.666px);
+    display:flex;
+    flex-direction:row;
+    align-items:stretch;
+    position:relative;
+    height:100px;
+  }
+
+  .card-inner {
+    display:flex;
+    flex:1;
+    gap:12px;
+  }
+
+  .card-left {
+    flex:1 1 0%;
+    display:flex;
+    align-items:center;
+  }
+
+  .card-left .big {
+    font-family: "Poppins", sans-serif;
+    font-size:20px;
+    font-weight:700;
+    color:#062032;
+    line-height:1.1;
+  }
+
+  .card-right {
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
+    align-items:flex-end;
+    min-width:90px;
+  }
+
+  .card-right .small {
+    font-size:12px;
+    font-weight:500;
+    color:#6b7782;
+    background:transparent;
+    padding:4px 6px;
+    border-radius:6px;
+  }
+
+  .topbar{      
+    background: var(--bar-yellow);      
+    display:flex;      
+    align-items:center;      
+    justify-content:space-between;      
+    padding:18px 28px;      
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);    
+  }
+
+  .title{
+    font-family: "Poppins", "Playfair Display", serif;
+    font-weight:800;
+    font-size:22px;
+    color: var(--text-dark);
+    letter-spacing:0.2px;
+  }
+
+  .actions{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    font-size:14px;
+  }
+
+  .actions a{
+    color: var(--muted);
+    text-decoration:none;
+    padding:8px 10px;
+    border-radius:8px;
+    transition: all 160ms ease;
+  }
+
+  .actions a:hover{
+    color: var(--text-dark);
+    background: rgba(0,0,0,0.04);
+    transform: translateY(-1px);
+  }
+
+  .actions .btn-primary{
+    background: #1A73E8;
+    color: #fff;
+    font-weight:600;
+    padding:8px 12px;
+    box-shadow: 0 6px 14px rgba(26,115,232,0.14);
+  }
+
+  @media (max-width:520px){
+    .brand .title{font-size:18px}
+    .actions{gap:8px;font-size:13px}
+    .topbar{padding:10px 12px}
+  }
+
+
+</style>
+</head>
+
+<body>
+  <header class="topbar" role="banner">
+    <div class="brand" aria-label="Site title">
+      <div class="title">Lotteries</div>
+    </div>
+
+    <nav class="actions" aria-label="Authentication">
+      <a href="/login" class="login">Login</a>
+      <a href="/register" class="btn-primary register">Register</a>
+    </nav>
+  </header>
+
+
+  <main>
+    <div class="grid">
+      {% for lottery in lotteries %}
+        <a class="card-link" href="{{ url_for('lottery_detail', lot_id=lottery.id) }}" style="text-decoration:none;">
+          <div class="card" role="button" aria-labelledby="lot-{{ lottery.id }}">
+            <div class="card-left">
+              <div id="lot-{{ lottery.id }}" class="big">{{ lottery.amount or lottery.id }}</div>
+            </div>
+
+            <div class="card-right">
+              <div></div>
+              <div class="small">{{ lottery.date }}</div>
+            </div>
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+  </main>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Lottery {{ lottery.id }}</title>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+    .page {
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      box-sizing: border-box;
+      text-align: center;
+    }
+
+    .card {
+      max-width: 520px;
+      width: 100%;
+      padding: 1.25rem;
+      border-radius: 8px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+      background: #fff;
+    }
+
+    .bottom-bar {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      justify-content: center;
+      padding: 0.75rem;
+      background: rgba(255,255,255,0.9);
+      box-shadow: 0 -6px 18px rgba(0,0,0,0.04);
+    }
+
+    .btn-disabled {
+      appearance: none;
+      -webkit-appearance: none;
+      border: 1px solid #d0d0d0;
+      background: #f4f4f4;
+      color: #666;
+      padding: 0.6rem 1rem;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    .amount {
+      display: inline-block;
+      font-size: 4rem;
+      line-height: 1;
+      font-weight: 800;
+      margin-left: 0.5rem;
+      vertical-align: middle;
+      letter-spacing: -0.02em;
+    }
+
+
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="card" role="region" aria-labelledby="lottery-title">
+      <span class="amount">{{ lottery.amount }}</span>      </p>
+      <p><strong>Date:</strong> {{ lottery.date }}</p>
+      <p><a href="/info">Info</a></p>
+    </div>
+  </main>
+
+  <div class="bottom-bar" aria-hidden="false">
+    <button class="btn-disabled" disabled aria-disabled="true" title="You must be authorized to participate">
+      You need to be authorized to participate
+    </button>
+  </div>
+</body>
+</html>
